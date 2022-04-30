@@ -1,46 +1,32 @@
-import Image from "next/image";
+import { useGetPostsQuery } from "@/features/api/getBasicInfo";
+import { Posts } from "@/types/posts";
 import React from "react";
+import PostPreview from "../PostPreview";
 import styles from "./FeaturedPosts.module.css";
+const emptyArray: Posts = [];
 
 const FeaturedPosts = () => {
+  const { posts } = useGetPostsQuery(undefined, {
+    selectFromResult: ({ data }) => ({
+      posts: data ?? emptyArray,
+    }),
+  });
+
   return (
     <section className={styles.FeaturedPosts}>
-      <section className={styles.FeaturedPosts_prev}>
-        <section>
-          <h2>title</h2>
-          <p>nov 1</p>
-          <p>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content.
-          </p>
-          <a href="#">countinue Reading ...</a>
-        </section>
-        <img src="/images/2.jpg" alt="" />
-      </section>
-      <section className={styles.FeaturedPosts_prev}>
-        <section>
-          <h2>title</h2>
-          <p>nov 1</p>
-          <p>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content.
-          </p>
-          <a href="#">countinue Reading ...</a>
-        </section>
-        <img src="/images/2.jpg" alt="" />
-      </section>
-      <section className={styles.FeaturedPosts_prev}>
-        <section>
-          <h2>title</h2>
-          <p>nov 1</p>
-          <p>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content.
-          </p>
-          <a href="#">countinue Reading ...</a>
-        </section>
-        <img src="/images/2.jpg" alt="" />
-      </section>
+      {!!posts.length &&
+        posts.map((post) => {
+          return (
+            <PostPreview
+              key={post.id}
+              title={post.title}
+              imageUrl={post.imageUrl}
+              content={post.content}
+              hits={post.hits}
+              id={post.id}
+            />
+          );
+        })}
     </section>
   );
 };
