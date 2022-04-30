@@ -1,0 +1,28 @@
+.Header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.Header_signin {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.header_navBar {
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  padding-left: 16px;
+  padding-right: 16px;
+  overflow-x: auto;
+}
+.header_navBar a {
+  padding: 1em;
+}

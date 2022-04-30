@@ -1,0 +1,22 @@
+.MainFeaturedPost {
+  background: url("../../public/images/3.jpg") no-repeat center;
+  background-size: cover;
+  min-height: 300px;
+  color: rgb(221, 228, 19);
+  padding: 2em;
+  border-radius: 4px;
+  margin-bottom: 2em;
+}
+.MainFeaturedPost a {
+  color: #fff;
+}
+
+.MainFeaturedPost_section {
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .MainFeaturedPost_section {
+    max-width: 50%;
+  }
+}
