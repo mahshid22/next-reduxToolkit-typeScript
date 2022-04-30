@@ -7,13 +7,15 @@ import styles from "./posts.module.css";
 
 const Post = () => {
   const { data: posts } = useGetPostsQuery();
-  console.log(posts);
-
   return (
     <Layout>
       <main className={styles.main_content}>
-        <MainFeaturedPost />
-        <FeaturedPosts />
+        {posts && (
+          <>
+            <MainFeaturedPost />
+            <FeaturedPosts posts={posts} />
+          </>
+        )}
       </main>
     </Layout>
   );

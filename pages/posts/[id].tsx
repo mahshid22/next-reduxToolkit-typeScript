@@ -1,10 +1,7 @@
 import Layout from "@/components/Layout/Layout";
 import PostComments from "@/components/PostComments";
 import SinglePost from "@/components/SinglePost";
-import {
-  useGetPostByIdQuery,
-  useGetPostsQuery,
-} from "@/features/api/getBasicInfo";
+import { useGetPostByIdQuery } from "@/features/api/getBasicInfo";
 import { skipToken } from "@reduxjs/toolkit/dist/query/react";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";

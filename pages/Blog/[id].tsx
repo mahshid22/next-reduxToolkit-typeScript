@@ -6,7 +6,8 @@ import { skipToken } from "@reduxjs/toolkit/dist/query/react";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import styles from "./Blog.module.css";
-const Blog: React.FC = () => {
+
+const Blog = () => {
   const router = useRouter();
   const [id, setId] = useState<string | undefined>();
   const { data: posts } = useGetPostsByCatQuery(id ?? skipToken);
