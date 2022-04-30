@@ -3,23 +3,20 @@ import Layout from "@/components/Layout/Layout";
 import MainFeaturedPost from "@/components/MainFeaturedPost";
 import { useGetPostsQuery } from "@/features/api/getBasicInfo";
 import React from "react";
-import styles from "./Blog.module.css";
+import styles from "./posts.module.css";
 
-const Blog = () => {
+const Post = () => {
   const { data: posts } = useGetPostsQuery();
+  console.log(posts);
 
   return (
     <Layout>
       <main className={styles.main_content}>
-        {posts && (
-          <>
-            <MainFeaturedPost />
-            <FeaturedPosts posts={posts} />
-          </>
-        )}
+        <MainFeaturedPost />
+        <FeaturedPosts />
       </main>
     </Layout>
   );
 };
 
-export default Blog;
+export default Post;

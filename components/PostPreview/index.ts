@@ -1,3 +1,3 @@
-import PostPreview from "./PostPreview.tsx";
+import PostPreview from "./PostPreview";
 
 export default PostPreview;

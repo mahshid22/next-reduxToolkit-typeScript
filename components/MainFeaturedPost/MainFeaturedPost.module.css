@@ -6,8 +6,6 @@
   padding: 2em;
   border-radius: 4px;
   margin-bottom: 2em;
-}
-.MainFeaturedPost a {
   color: #fff;
 }
 
@@ -15,8 +13,16 @@
   width: 100%;
 }
 
+.countinueLink {
+  color: rgb(229, 0, 0);
+}
+.MainFeaturedPost_section p,
+.MainFeaturedPost_section h2 {
+  margin-bottom: 1em;
+}
+
 @media (min-width: 900px) {
   .MainFeaturedPost_section {
-    max-width: 50%;
+    max-width: 60%;
   }
 }

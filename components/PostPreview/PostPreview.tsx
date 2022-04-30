@@ -4,16 +4,17 @@ import React from "react";
 import styles from "./PostPreview.module.css";
 
 const PostPreview = (props: Partial<IPost>) => {
-  const { id, title, content, hits } = props;
+  const { id, title, content, hits, categoryId } = props;
   return (
     <section className={styles.FeaturedPosts_prev}>
       <section>
         <h3>{title}</h3>
+        <p className={styles.post_paragraph}>Cat : {categoryId}</p>
         <p className={styles.post_paragraph}>Hits : {hits}</p>
         <p className={styles.post_paragraph}>
           {content?.substring(0, 150)} ...
         </p>
-        <Link as={`/Blog/${id}`} href="/Blog/[id]">
+        <Link as={`/posts/${id}`} href="/posts/[id]">
           <a className={styles.countinueLink}>countinue Reading ...</a>
         </Link>
       </section>

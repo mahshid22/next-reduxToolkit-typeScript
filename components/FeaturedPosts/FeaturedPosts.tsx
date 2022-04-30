@@ -1,20 +1,18 @@
-import { useGetPostsQuery } from "@/features/api/getBasicInfo";
-import { Posts } from "@/types/posts";
+import { IPost, Posts } from "@/types/posts";
 import React from "react";
 import PostPreview from "../PostPreview";
 import styles from "./FeaturedPosts.module.css";
-const emptyArray: Posts = [];
 
-const FeaturedPosts = () => {
-  const { posts } = useGetPostsQuery(undefined, {
-    selectFromResult: ({ data }) => ({
-      posts: data ?? emptyArray,
-    }),
-  });
+type Props = {
+  posts: IPost[];
+};
+
+const FeaturedPosts = (props: Props) => {
+  const { posts } = props;
 
   return (
     <section className={styles.FeaturedPosts}>
-      {!!posts.length &&
+      {!!posts &&
         posts.map((post) => {
           return (
             <PostPreview
@@ -23,6 +21,7 @@ const FeaturedPosts = () => {
               imageUrl={post.imageUrl}
               content={post.content}
               hits={post.hits}
+              categoryId={post.categoryId}
               id={post.id}
             />
           );

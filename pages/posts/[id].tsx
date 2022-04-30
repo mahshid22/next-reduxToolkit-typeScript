@@ -1,15 +1,23 @@
-import FeaturedPosts from "@/components/FeaturedPosts";
 import Layout from "@/components/Layout/Layout";
-import MainFeaturedPost from "@/components/MainFeaturedPost";
-import { useGetPostsByCatQuery } from "@/features/api/getBasicInfo";
+import PostComments from "@/components/PostComments";
+import SinglePost from "@/components/SinglePost";
+import {
+  useGetPostByIdQuery,
+  useGetPostsQuery,
+} from "@/features/api/getBasicInfo";
 import { skipToken } from "@reduxjs/toolkit/dist/query/react";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import styles from "./Blog.module.css";
+import styles from "./posts.module.css";
+
 const Blog: React.FC = () => {
   const router = useRouter();
   const [id, setId] = useState<string | undefined>();
-  const { data: posts } = useGetPostsByCatQuery(id ?? skipToken);
+  const {
+    data: post,
+    isFetching,
+    isSuccess,
+  } = useGetPostByIdQuery(id ?? skipToken);
 
   useEffect(() => {
     if (router.isReady) {
@@ -20,12 +28,8 @@ const Blog: React.FC = () => {
   return (
     <Layout>
       <main className={styles.main_content}>
-        {posts && (
-          <>
-            <MainFeaturedPost />
-            <FeaturedPosts posts={posts} />
-          </>
-        )}
+        <SinglePost />
+        <PostComments />
       </main>
     </Layout>
   );
