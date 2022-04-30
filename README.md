@@ -1,5 +1,5 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
+>>>>>>>purpose of this project is using RTK and TypeScript with Next.js(Best practice of css in not the perpuse of this project)<<<<<<<<
 ## Getting Started
 
 First, run the development server:
