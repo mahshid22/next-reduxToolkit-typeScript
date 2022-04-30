@@ -1,62 +1,24 @@
-import { IcityRespone } from "@/types/Cities";
-import { ILoaderCategorysRespone, ILoadersRespone } from "@/types/LoaderType";
-import {
-  GetAllCities,
-  GetByTitleCities,
-  GetAllLoader,
-  LoaderCategory,
-} from "@/types/Urls";
-import { emptySplitApi } from "./apiSlice";
-
-export const getBasicInfo = emptySplitApi.injectEndpoints({
+import { baseApi } from "./apiSlice";
+import { PostsUrl, PostUrl } from "./Url";
+import { IPost, Posts } from "@/types/posts";
+export const getBasicInfo = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    getCities: build.query<IcityRespone, void>({
-      query: () => GetAllCities,
+    getPosts: build.query<Posts, void>({
+      query: () => PostsUrl,
       providesTags: (result) =>
         result
           ? [
-              ...result.data.map(({ id }) => ({ type: "Cities" as const, id })),
-              { type: "Cities", id: "LIST" },
+              ...result.map(({ id }) => ({ type: "Posts" as const, id })),
+              { type: "Posts", id: "LIST" },
             ]
-          : [{ type: "Cities", id: "LIST" }],
-      keepUnusedDataFor: 86400,
+          : [{ type: "Posts", id: "LIST" }],
     }),
-    getCitiesWithId: build.query<IcityRespone, string>({
-      query: (value?: string) => `${GetByTitleCities}${value}`,
-      providesTags: (result) =>
-        result
-          ? [
-              ...result.data.map(({ id }) => ({ type: "Cities" as const, id })),
-              { type: "Cities", id: "LIST" },
-            ]
-          : [{ type: "Cities", id: "LIST" }],
-    }),
-
-    getLoaders: build.query<ILoadersRespone, void>({
-      query: () => GetAllLoader,
-      providesTags: (result) =>
-        result
-          ? [
-              ...result.data.map(({ id }) => ({
-                type: "Loaders" as const,
-                id,
-              })),
-              { type: "Loaders", id: "LIST" },
-            ]
-          : [{ type: "Loaders", id: "LIST" }],
-      keepUnusedDataFor: 86400,
-    }),
-    loaderCategory: build.query<ILoaderCategorysRespone, void>({
-      query: () => LoaderCategory,
-      keepUnusedDataFor: 86400,
+    getPostById: build.query<IPost, string>({
+      query: (id) => `${PostUrl}/${id}`,
+      providesTags: (result, error, id) => [{ type: "Posts" as const, id }],
     }),
   }),
   overrideExisting: false,
 });
 
-export const {
-  useGetCitiesQuery,
-  useGetLoadersQuery,
-  useGetCitiesWithIdQuery,
-  useLoaderCategoryQuery,
-} = getBasicInfo;
+export const { useGetPostsQuery, useGetPostByIdQuery } = getBasicInfo;

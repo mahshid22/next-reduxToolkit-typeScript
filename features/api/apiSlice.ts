@@ -1,22 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const apilitApi = createApi({
+export const baseApi = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.BASE_URL,
+    baseUrl: "http://fakeapi.jsonparseronline.com/",
     prepareHeaders: (headers) => {
       headers.set("Access-Control-Allow-Credentials", "true");
       return headers;
     },
   }),
-  tagTypes: [
-    "Cities",
-    "Loaders",
-    "UserProfile",
-    "TruckInfoByUserId",
-    "Cargos",
-    "CargoTrip",
-    "User",
-    "CargobyId",
-  ],
+  tagTypes: ["Posts"],
   endpoints: () => ({}),
 });
