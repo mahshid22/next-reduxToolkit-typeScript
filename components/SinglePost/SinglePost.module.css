@@ -1,1 +1,3 @@
-.SinglePost{}
+.SinglePost {
+  min-height: 400px;
+}

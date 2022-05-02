@@ -13,6 +13,7 @@ const Blog: React.FC = () => {
   const {
     data: post,
     isFetching,
+    isLoading,
     isSuccess,
   } = useGetPostByIdQuery(id ?? skipToken);
 
@@ -25,8 +26,14 @@ const Blog: React.FC = () => {
   return (
     <Layout>
       <main className={styles.main_content}>
-        <SinglePost />
-        <PostComments />
+        {!!post ? (
+          <>
+            <SinglePost post={post} />
+            <PostComments />
+          </>
+        ) : (
+          <div>Loading...</div>
+        )}
       </main>
     </Layout>
   );

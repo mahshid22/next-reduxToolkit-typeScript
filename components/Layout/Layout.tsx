@@ -11,8 +11,10 @@ const Layout = ({ children }: Props) => {
     <>
       <Meta />
       <div className={styles.container}>
-        <Header />
-        {children}
+        <div className={styles.main}>
+          <Header />
+          {children}
+        </div>
         <Footer />
       </div>
     </>

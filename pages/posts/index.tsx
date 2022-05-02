@@ -6,15 +6,17 @@ import React from "react";
 import styles from "./posts.module.css";
 
 const Post = () => {
-  const { data: posts } = useGetPostsQuery();
+  const { data: posts, isLoading } = useGetPostsQuery();
   return (
     <Layout>
       <main className={styles.main_content}>
-        {posts && (
+        {posts ? (
           <>
             <MainFeaturedPost />
             <FeaturedPosts posts={posts} />
           </>
+        ) : (
+          <div>Loading...</div>
         )}
       </main>
     </Layout>
