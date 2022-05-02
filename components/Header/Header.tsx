@@ -1,5 +1,4 @@
 import { useGetPostsCategoriesQuery } from "@/features/api/getBasicInfo";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import styles from "./Header.module.css";
@@ -10,7 +9,7 @@ const Header = () => {
   return (
     <header className={styles.Header}>
       <section className={styles.Header_signin}>
-        <h2>my blog</h2>
+        <h1>my blog</h1>
         <button className={styles.header_signout}>Sign Up!</button>
       </section>
       <nav className={styles.header_navBar}>

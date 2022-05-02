@@ -15,7 +15,7 @@ const MainFeaturedPost: React.FC = () => {
         <section className={styles.MainFeaturedPost_section}>
           <h2>{post.title}</h2>
           <p>{post.content}</p>
-          <Link as={`/Blog/${post.id}`} href="/Blog/[id]">
+          <Link as={`/posts/${post.id}`} href="/posts/[id]">
             <a className={styles.countinueLink}>countinue Reading ...</a>
           </Link>
         </section>
