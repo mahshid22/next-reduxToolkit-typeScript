@@ -33,6 +33,12 @@ h3 {
 }
 
 p {
-  font-size: 0.9em;
+  font-size: 0.9rem;
   line-height: 1.5em;
+}
+
+button {
+  border-radius: 4px;
+  padding: 1em;
+  font-size: 0.8rem;
 }
