@@ -10,3 +10,13 @@ export interface IPost {
 }
 
 export type Posts = IPost[];
+
+export interface IComment {
+  id: number;
+  userId: number;
+  likes: number;
+  body: string;
+  postId: number;
+}
+
+export type Comments = IComment[];

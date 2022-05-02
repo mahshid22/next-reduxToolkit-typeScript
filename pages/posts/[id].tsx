@@ -1,7 +1,10 @@
 import Layout from "@/components/Layout/Layout";
 import PostComments from "@/components/PostComments";
 import SinglePost from "@/components/SinglePost";
-import { useGetPostByIdQuery } from "@/features/api/getBasicInfo";
+import {
+  useGetPostByIdQuery,
+  useGetPostcommentsQuery,
+} from "@/features/api/getBasicInfo";
 import { skipToken } from "@reduxjs/toolkit/dist/query/react";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -16,6 +19,8 @@ const Blog: React.FC = () => {
     isLoading,
     isSuccess,
   } = useGetPostByIdQuery(id ?? skipToken);
+  const { data: comments, isLoading: commentsLoading } =
+    useGetPostcommentsQuery(id ?? skipToken);
 
   useEffect(() => {
     if (router.isReady) {
@@ -26,10 +31,10 @@ const Blog: React.FC = () => {
   return (
     <Layout>
       <main className={styles.main_content}>
-        {!!post ? (
+        {!!post && comments ? (
           <>
             <SinglePost post={post} />
-            <PostComments />
+            <PostComments comments={comments} />
           </>
         ) : (
           <div>Loading...</div>

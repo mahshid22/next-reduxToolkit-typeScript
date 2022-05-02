@@ -1,1 +1,26 @@
-.PostComments{}
+.PostComments form,
+.PostComments section {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 0 auto;
+  margin-bottom: 1em;
+}
+.PostComments form * {
+  margin-bottom: 0.7em;
+  padding: 0.7em;
+}
+
+.commentP {
+  margin-bottom: 2em;
+  border-bottom: 1px rgb(224 220 220) solid;
+}
+
+.commentSpan {
+  color: rgb(232, 14, 14);
+}
+
+.commentImg {
+  margin-left: 0.5em;
+  width: 4%;
+}
