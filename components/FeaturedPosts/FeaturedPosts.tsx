@@ -1,4 +1,4 @@
-import { IPost, Posts } from "@/types/posts";
+import { IPost } from "@/types/posts";
 import React from "react";
 import PostPreview from "../PostPreview";
 import styles from "./FeaturedPosts.module.css";

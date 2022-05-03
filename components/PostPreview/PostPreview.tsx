@@ -1,9 +1,19 @@
+import { usePrefetch } from "@/features/api/getBasicInfo";
 import { IPost } from "@/types/posts";
 import Link from "next/link";
-import React from "react";
+import React, { useCallback } from "react";
 import styles from "./PostPreview.module.css";
 
 const PostPreview = (props: Partial<IPost>) => {
+  const prefetchPosts = usePrefetch("getPostById");
+  const prefetchPostComment = usePrefetch("getPostcomments");
+  const prefetchPost = (id: number | undefined) => {
+    console.log(id);
+    if (id) {
+      prefetchPostComment(id.toString());
+      prefetchPosts(id.toString());
+    }
+  };
   const { id, title, content, hits, categoryId } = props;
   return (
     <section className={styles.FeaturedPosts_prev}>
@@ -15,7 +25,12 @@ const PostPreview = (props: Partial<IPost>) => {
           {content?.substring(0, 150)} ...
         </p>
         <Link as={`/posts/${id}`} href="/posts/[id]">
-          <a className={styles.countinueLink}>countinue Reading ...</a>
+          <a
+            onMouseEnter={() => prefetchPost(id)}
+            className={styles.countinueLink}
+          >
+            countinue Reading ...
+          </a>
         </Link>
       </section>
       <img src="/images/2.jpg" alt="" />
