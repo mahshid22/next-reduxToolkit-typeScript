@@ -27,7 +27,11 @@ const Header = () => {
         {PostsCategories &&
           PostsCategories.map((PostsCategorie) => {
             return (
-              <Link as={`/Blog/${PostsCategorie.id}`} href="/Blog/[id]">
+              <Link
+                as={`/Blog/${PostsCategorie.id}`}
+                href="/Blog/[id]"
+                key={PostsCategorie.id}
+              >
                 <a onMouseEnter={() => prefetchNext(PostsCategorie.id)}>
                   {PostsCategorie.name}
                 </a>
