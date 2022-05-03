@@ -66,4 +66,5 @@ export const {
   useGetPostsCategoriesQuery,
   useGetPostsByCatQuery,
   useGetPostcommentsQuery,
+  usePrefetch,
 } = getBasicInfo;

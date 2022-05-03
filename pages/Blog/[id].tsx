@@ -10,7 +10,7 @@ import styles from "./Blog.module.css";
 const Blog = () => {
   const router = useRouter();
   const [id, setId] = useState<string | undefined>();
-  const { data: posts, isLoading } = useGetPostsByCatQuery(id ?? skipToken);
+  const { data: posts, isFetching } = useGetPostsByCatQuery(id ?? skipToken);
 
   useEffect(() => {
     if (router.isReady) {
@@ -21,7 +21,7 @@ const Blog = () => {
   return (
     <Layout>
       <main className={styles.main_content}>
-        {posts ? (
+        {posts && !isFetching ? (
           <>
             <MainFeaturedPost />
             <FeaturedPosts posts={posts} />

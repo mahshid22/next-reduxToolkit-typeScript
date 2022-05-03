@@ -1,11 +1,19 @@
-import { useGetPostsCategoriesQuery } from "@/features/api/getBasicInfo";
+import {
+  useGetPostsCategoriesQuery,
+  usePrefetch,
+} from "@/features/api/getBasicInfo";
 import Link from "next/link";
-import React from "react";
+import React, { useCallback } from "react";
 import styles from "./Header.module.css";
 
 const Header = () => {
   const { data: PostsCategories } = useGetPostsCategoriesQuery();
+  const prefetchPage = usePrefetch("getPostsByCat");
 
+  const prefetchNext = (id: number) => {
+    console.log(id);
+    if (id) prefetchPage(id.toString());
+  };
   return (
     <header className={styles.Header}>
       <section className={styles.Header_signin}>
@@ -20,7 +28,9 @@ const Header = () => {
           PostsCategories.map((PostsCategorie) => {
             return (
               <Link as={`/Blog/${PostsCategorie.id}`} href="/Blog/[id]">
-                <a>{PostsCategorie.name}</a>
+                <a onMouseEnter={() => prefetchNext(PostsCategorie.id)}>
+                  {PostsCategorie.name}
+                </a>
               </Link>
             );
           })}
