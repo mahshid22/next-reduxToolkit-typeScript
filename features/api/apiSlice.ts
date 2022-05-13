@@ -8,6 +8,6 @@ export const baseApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ["Posts", "Categories", "comments"],
+  tagTypes: ["Posts", "Categories", "comments", "counter"],
   endpoints: () => ({}),
 });

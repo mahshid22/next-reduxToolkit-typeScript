@@ -11,7 +11,6 @@ const Header = () => {
   const prefetchPage = usePrefetch("getPostsByCat");
 
   const prefetchNext = (id: number) => {
-    console.log(id);
     if (id) prefetchPage(id.toString());
   };
   return (
