@@ -27,6 +27,7 @@
 
 .post_paragraph {
   margin-bottom: 0.5em;
+  flex-grow: 1;
 }
 @media (min-width: 603px) {
   .FeaturedPosts_prev img {

@@ -18,9 +18,11 @@ const PostPreview = (props: Partial<IPost>) => {
   return (
     <section className={styles.FeaturedPosts_prev}>
       <section>
-        <h3>{title}</h3>
-        <p className={styles.post_paragraph}>Cat : {categoryId}</p>
-        <p className={styles.post_paragraph}>Hits : {hits}</p>
+        <div>
+          <h3>{title}</h3>
+          <p className={styles.post_paragraph}>Cat : {categoryId}</p>
+          <p className={styles.post_paragraph}>Hits : {hits}</p>
+        </div>
         <p className={styles.post_paragraph}>
           {content?.substring(0, 150)} ...
         </p>
