@@ -8,7 +8,6 @@ const PostPreview = (props: Partial<IPost>) => {
   const prefetchPosts = usePrefetch("getPostById");
   const prefetchPostComment = usePrefetch("getPostcomments");
   const prefetchPost = (id: number | undefined) => {
-    console.log(id);
     if (id) {
       prefetchPostComment(id.toString());
       prefetchPosts(id.toString());

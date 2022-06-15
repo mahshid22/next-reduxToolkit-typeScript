@@ -3,7 +3,7 @@ import {
   usePrefetch,
 } from "@/features/api/getBasicInfo";
 import Link from "next/link";
-import React, { useCallback } from "react";
+import React from "react";
 import styles from "./Header.module.css";
 
 const Header = () => {

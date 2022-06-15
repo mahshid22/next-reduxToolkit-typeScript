@@ -13,12 +13,7 @@ import styles from "./posts.module.css";
 const Blog: React.FC = () => {
   const router = useRouter();
   const [id, setId] = useState<string | undefined>();
-  const {
-    data: post,
-    isFetching,
-    isLoading,
-    isSuccess,
-  } = useGetPostByIdQuery(id ?? skipToken);
+  const { data: post } = useGetPostByIdQuery(id ?? skipToken);
   const { data: comments, isLoading: commentsLoading } =
     useGetPostcommentsQuery(id ?? skipToken);
 

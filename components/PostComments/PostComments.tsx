@@ -9,11 +9,12 @@ const PostComments = (props: Props) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
-  const onSubmit: SubmitHandler<any> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<any> = (data) => {
+    console.log(data);
+  };
 
   return (
     <div className={styles.PostComments}>

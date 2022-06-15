@@ -1,7 +1,7 @@
 import Footer from "../Footer";
 import Header from "../Header";
 import Meta from "../Meta/Meta";
-import styles from ".//Layout.module.css";
+import styles from "./Layout.module.css";
 type Props = {
   children: React.ReactNode;
 };
